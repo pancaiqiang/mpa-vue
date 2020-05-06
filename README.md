@@ -1,5 +1,7 @@
 # mpa-vue
 
+> 基于vue-cli3 的多页应用
+
 ## Project setup
 ```
 npm install
