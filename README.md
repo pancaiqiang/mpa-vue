@@ -1,6 +1,6 @@
 # mpa-vue
 
-> 基于vue-cli3 的多页应用
+> 基于vue-cli3 的单页应用项目模板
 
 ## Project setup
 ```
