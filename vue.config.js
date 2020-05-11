@@ -18,6 +18,7 @@ const pages = {
     chunks: ['chunk-vendors', 'chunk-common', 'index']
   }
 }
+
 glob.sync('./src/pages/**/*.js').forEach((filePath) => {
   console.log(filePath)
   // eg: filePath:  './src/pages/aboutus/main.js'
@@ -28,12 +29,11 @@ glob.sync('./src/pages/**/*.js').forEach((filePath) => {
   let filename = filePath.split('./src/pages/')[1]
   let dirname = filename.split(`/${basename}.js`)[0]
 
-  pages[basename] = {
+  pages[`${dirname}/${basename}`] = {
     entry: `src/pages/${filename}`,
     template: 'public/index.html',
     title: basename,
-    filename: `${dirname}/${basename}.html`,
-    chunks: ['chunk-vendors', 'chunk-common', basename]
+    filename: `${dirname}/${basename}.html`
   }
 })
 
