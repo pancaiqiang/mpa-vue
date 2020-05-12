@@ -37,12 +37,23 @@ glob.sync('./src/pages/**/*.js').forEach((filePath) => {
   }
 })
 
-console.log(pages)
-
 module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: '',
   pages,
+  chainWebpack: config => {
+    config.optimization.splitChunks({
+      cacheGroups: {
+        vendors: {
+          name: 'chunk-vendors',
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          chunks: 'initial'
+        },
+        common: {}
+      }
+    });
+  },
   productionSourceMap: process.env.NODE_ENV === 'production' ? false : true
 }
